@@ -2,7 +2,7 @@
 
 A mobile-first scenic walking companion with an original pastel-pink bunny mascot.
 
-## Working flows
+## App features
 - Real OpenStreetMap map, user-initiated area search and mapped-place discovery.
 - FOSSGIS pedestrian directions through suggested or bookmarked stops; cached and rate limited.
 - Time-budget loop suggestions, with explicit notice when nearby stops exceed the budget.
@@ -15,7 +15,6 @@ A mobile-first scenic walking companion with an original pastel-pink bunny masco
 - Community reports, saved device-local directions, app-shell service worker and install manifest.
 
 ## Boundaries
-- Site starts owner-private; invitations require recipients to have Site access. No audience change is automatic.
 - HealthKit / Health Connect and background native pedometer integration are not implemented. Browser step counts show unavailable.
 - GPS recording requires permissions and a foreground browser; mobile OS background suspension may interrupt fixes.
 - Offline directions and dashboard snapshots are cached on the device. Offline map tiles are not downloaded.
@@ -27,7 +26,6 @@ A mobile-first scenic walking companion with an original pastel-pink bunny masco
 ## Sources
 - Map: https://www.openstreetmap.org/copyright
 - Pedestrian routing: https://routing.openstreetmap.de/about.html
-- Search: https://nominatim.org/release-docs/latest/api/Search/
 - Places: https://github.com/komoot/photon
 - Sunset: https://sunrise-sunset.org/api
 - MET walking values: https://pacompendium.com/walking/
@@ -38,3 +36,11 @@ TypeScript, production Vinext build, database migration/constraint checks and do
 
 ## Nearby discovery reliability update
 Named-area searches use Photon/OpenStreetMap without sending GPS coordinates to Photon. Distances and nearby filtering run within the app. A checked Croydon place catalog keeps real parks available when live lookup fails. It includes public OSM named-place snapshots and council directory links. Route options can be loops or one-way walks, with selectable/reorderable real stops. GPS-selected and searched areas persist in account preferences.
+
+## Public source and local setup
+This repository publishes the Flâneur application, original mascot assets, route/place logic, API business logic and database migrations. The live prototype was built on managed hosting. Its vendor-specific authentication, connector and deployment infrastructure is excluded from this public export.
+
+Run `npm install` then `npm run dev` to view the interface locally. The public export includes two deliberate integration points: `lib/auth.ts` must verify a real server-side session and return an account identity; `lib/platform.ts` must expose D1-compatible `DB` and R2-compatible `BUCKET` bindings. Authentication currently returns no user, so account/API operations are unavailable until these adapters are connected. Do not replace it with a shared demo identity or a client-supplied account ID. Apply the SQL migrations to your database before enabling the backend. This export is not a one-click production deployment.
+
+### Next improvements
+More reliable scenic ranking; supported native step tracking; community recommendations; independent hosting adapters; broader real-device testing.

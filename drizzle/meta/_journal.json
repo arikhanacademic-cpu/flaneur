@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1791845706174,
+      "tag": "0000_fast_bishop",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1791845791422,
+      "tag": "0001_green_marvex",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1791846550871,
+      "tag": "0002_nervous_sinister_six",
+      "breakpoints": true
+    }
+  ]
+}
